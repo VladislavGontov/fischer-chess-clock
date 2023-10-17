@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fischer's Chess Clock</title>
+    <link rel="icon" type="image/x-icon" href="/src/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>    
+    <main class="main">
+        <div class="nomobile hide">
+            <div class="window-welcome">
+                <div class="window-text">
+                    This app works only on mobile devices with touch screens.
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="welcome">
+                <div class="window-welcome">
+                <div class="window-text">
+                    Switch to the fullscreen mode?
+                </div>
+                <div class="buttons">
+                    <div class="btn" ontouchend="(()=>{document.documentElement.requestFullscreen(); 
+                        document.querySelector('.welcome').classList.add('hide');})()">Accept</div>
+                    <div class="btn" ontouchend="document.querySelector('.welcome').classList.add('hide')">Reject</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="window-reload hide">
+            <div class="window-welcome">
+            <div class="window-text">
+                Are you sure?
+            </div>
+            <div class="buttons">
+                <div class="btn" ontouchend="reload()">Yes</div>
+                <div class="btn" ontouchend="document.querySelector('.window-reload').classList.add('hide')">No</div>
+            </div>
+        </div>
+    </div>
+
+        <div class="first-player noactive" ontouchstart="(()=>{startSecondPlayer(); stopFirstPlayer()})()">
+            
+        </div>
+        <div class="control-panel">
+            <div class="pause" ontouchend="startPause()"></div>
+            <div class="time">
+                <input id="initial-time" type="number" value="3" oninput="change()">
+                <span class="plus-symbol">+</span>
+                <input id="add-time" type="number" value="2" oninput="change()">
+            </div>
+                
+            <div class="reload" ontouchend="document.querySelector('.window-reload').classList.remove('hide')"></div>
+        </div>
+        <div class="second-player noactive" ontouchstart="(()=>{startFirstPlayer(); stopSecondPlayer()})()">
+            
+        </div>
+    </main>
+
+    <script src="srcipt.js"></script>
+</body>
+</html>
